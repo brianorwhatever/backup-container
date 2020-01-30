@@ -21,9 +21,10 @@ COPY webhook-template.json /
 # --------------------------------------------------------------------------------------------------------
 ARG SOURCE_REPO=BCDevOps
 ARG GOCROND_VERSION=0.6.2
-ADD https://github.com/$SOURCE_REPO/go-crond/releases/download/$GOCROND_VERSION/go-crond-64-linux /usr/bin/go-crond
 
 USER root
+
+RUN curl -o /usr/bin/go-crond https://github.com/$SOURCE_REPO/go-crond/releases/download/$GOCROND_VERSION/go-crond-64-linux 
 RUN chmod ug+x /usr/bin/go-crond
 # ========================================================================================================
 
